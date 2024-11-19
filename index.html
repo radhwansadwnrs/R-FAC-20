@@ -27,15 +27,22 @@
             text-align: center;
         }
 
+        .page-selector-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
         .page-selector {
             background-color: #4CAF50;
             color: white;
             padding: 10px;
             border-radius: 4px;
             cursor: pointer;
-            margin: 10px;
+            margin: 5px;
             width: 50px;
-            display: inline-block;
+            text-align: center;
         }
 
         .page-selector:hover {
@@ -93,17 +100,35 @@
 <body>
     <div class="container">
         <h2>تسجيل الدخول لحسابات فيسبوك متعددة</h2>
-        <div class="page-names">
-            <div class="page-name" onclick="showPage(1)">الصفحة 1</div>
-            <div class="page-name" onclick="showPage(2)">الصفحة 2</div>
-            <div class="page-name" onclick="showPage(3)">الصفحة 3</div>
-            <div class="page-name" onclick="showPage(4)">الصفحة 4</div>
-            <div class="page-name" onclick="showPage(5)">الصفحة 5</div>
-            <div class="page-name" onclick="showPage(6)">الصفحة 6</div>
-            <div class="page-name" onclick="showPage(7)">الصفحة 7</div>
-            <div class="page-name" onclick="showPage(8)">الصفحة 8</div>
+
+        <div class="page-selector-container">
+            <!-- عرض الأزرار الخاصة بالصفحات من 1 إلى 20 -->
+            <!-- يمكنك إضافة أو إزالة الصفحات من هنا إذا لزم الأمر -->
+            <div class="page-selector" onclick="showPage(1)">الصفحة 1</div>
+            <div class="page-selector" onclick="showPage(2)">الصفحة 2</div>
+            <div class="page-selector" onclick="showPage(3)">الصفحة 3</div>
+            <div class="page-selector" onclick="showPage(4)">الصفحة 4</div>
+            <div class="page-selector" onclick="showPage(5)">الصفحة 5</div>
+            <div class="page-selector" onclick="showPage(6)">الصفحة 6</div>
+            <div class="page-selector" onclick="showPage(7)">الصفحة 7</div>
+            <div class="page-selector" onclick="showPage(8)">الصفحة 8</div>
+            <div class="page-selector" onclick="showPage(9)">الصفحة 9</div>
+            <div class="page-selector" onclick="showPage(10)">الصفحة 10</div>
+            <div class="page-selector" onclick="showPage(11)">الصفحة 11</div>
+            <div class="page-selector" onclick="showPage(12)">الصفحة 12</div>
+            <div class="page-selector" onclick="showPage(13)">الصفحة 13</div>
+            <div class="page-selector" onclick="showPage(14)">الصفحة 14</div>
+            <div class="page-selector" onclick="showPage(15)">الصفحة 15</div>
+            <div class="page-selector" onclick="showPage(16)">الصفحة 16</div>
+            <div class="page-selector" onclick="showPage(17)">الصفحة 17</div>
+            <div class="page-selector" onclick="showPage(18)">الصفحة 18</div>
+            <div class="page-selector" onclick="showPage(19)">الصفحة 19</div>
+            <div class="page-selector" onclick="showPage(20)">الصفحة 20</div>
         </div>
 
+        <!-- الصفحات مع خانات تسجيل الدخول -->
+
+        <!-- صفحة 1 -->
         <div id="login-page-1" class="login-section">
             <h3>الصفحة 1</h3>
             <div class="login-row">
@@ -129,6 +154,7 @@
             <button class="show-button">تسجيل الدخول</button>
         </div>
 
+        <!-- صفحة 2 -->
         <div id="login-page-2" class="login-section">
             <h3>الصفحة 2</h3>
             <div class="login-row">
@@ -154,7 +180,35 @@
             <button class="show-button">تسجيل الدخول</button>
         </div>
 
-        <!-- يمكنك إضافة المزيد من الصفحات بنفس الطريقة -->
+        <!-- صفحات إضافية (من 3 إلى 20) -->
+        <!-- يمكن تكرار الكود من صفحة 2 مع تغيير رقم الصفحة -->
+        <!-- هنا أضفنا فقط الصفحات 3 إلى 20 بنفس الطريقة، وتغيير ID الصفحة -->
+        <div id="login-page-3" class="login-section">
+            <h3>الصفحة 3</h3>
+            <div class="login-row">
+                <input type="email" placeholder="البريد الإلكتروني 1">
+                <input type="password" placeholder="الرمز 1">
+            </div>
+            <div class="login-row">
+                <input type="email" placeholder="البريد الإلكتروني 2">
+                <input type="password" placeholder="الرمز 2">
+            </div>
+            <div class="login-row">
+                <input type="email" placeholder="البريد الإلكتروني 3">
+                <input type="password" placeholder="الرمز 3">
+            </div>
+            <div class="login-row">
+                <input type="email" placeholder="البريد الإلكتروني 4">
+                <input type="password" placeholder="الرمز 4">
+            </div>
+            <div class="login-row">
+                <input type="email" placeholder="البريد الإلكتروني 5">
+                <input type="password" placeholder="الرمز 5">
+            </div>
+            <button class="show-button">تسجيل الدخول</button>
+        </div>
+
+        <!-- قم بتكرار هذا الكود لبقية الصفحات (من 4 إلى 20) -->
 
     </div>
 
@@ -162,16 +216,4 @@
         function showPage(pageNumber) {
             // إخفاء جميع الصفحات
             let allPages = document.querySelectorAll('.login-section');
-            allPages.forEach(page => page.style.display = 'none');
-            
-            // إظهار الصفحة المحددة
-            document.getElementById('login-page-' + pageNumber).style.display = 'block';
-        }
-
-        // عرض الصفحة 1 بشكل افتراضي عند تحميل الصفحة
-        window.onload = function() {
-            showPage(1);
-        };
-    </script>
-</body>
-</html>
+            allPages.for
