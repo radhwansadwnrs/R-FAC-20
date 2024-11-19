@@ -14,6 +14,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            flex-direction: column;
         }
 
         .container {
@@ -37,13 +38,13 @@
         .page-selector {
             background-color: #4CAF50;
             color: white;
-            padding: 5px; /* تصغير الحجم */
+            padding: 5px;
             border-radius: 4px;
             cursor: pointer;
             margin: 5px;
-            width: 50px; /* تصغير الحجم */
+            width: 50px;
             display: inline-block;
-            font-size: 14px; /* تصغير الخط */
+            font-size: 14px;
         }
 
         .page-selector:hover {
@@ -96,6 +97,22 @@
         .page-name:hover {
             background-color: #ccc;
         }
+
+        /* تحسين التفاعل مع الأجهزة المحمولة */
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+
+            .page-selector {
+                font-size: 12px;
+                width: 40px;
+            }
+
+            .show-button {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -103,99 +120,59 @@
         <h2>تسجيل الدخول لحسابات فيسبوك متعددة</h2>
 
         <div class="page-selector-container">
-            <div class="page-selector" onclick="showPage(1)">الصفحة 1</div>
-            <div class="page-selector" onclick="showPage(2)">الصفحة 2</div>
-            <div class="page-selector" onclick="showPage(3)">الصفحة 3</div>
-            <div class="page-selector" onclick="showPage(4)">الصفحة 4</div>
-            <div class="page-selector" onclick="showPage(5)">الصفحة 5</div>
-            <div class="page-selector" onclick="showPage(6)">الصفحة 6</div>
-            <div class="page-selector" onclick="showPage(7)">الصفحة 7</div>
-            <div class="page-selector" onclick="showPage(8)">الصفحة 8</div>
+            <!-- استخدام JavaScript لتوليد الصفحات ديناميكيًا -->
+            <div id="page-buttons"></div>
         </div>
 
-        <!-- صفحة 1 -->
-        <div id="login-page-1" class="login-section">
-            <h3>الصفحة 1</h3>
-            <div class="login-row">
-                <input type="email" placeholder="البريد الإلكتروني 1">
-                <input type="password" placeholder="الرمز 1">
-            </div>
-            <div class="login-row">
-                <input type="email" placeholder="البريد الإلكتروني 2">
-                <input type="password" placeholder="الرمز 2">
-            </div>
-            <div class="login-row">
-                <input type="email" placeholder="البريد الإلكتروني 3">
-                <input type="password" placeholder="الرمز 3">
-            </div>
-            <div class="login-row">
-                <input type="email" placeholder="البريد الإلكتروني 4">
-                <input type="password" placeholder="الرمز 4">
-            </div>
-            <div class="login-row">
-                <input type="email" placeholder="البريد الإلكتروني 5">
-                <input type="password" placeholder="الرمز 5">
-            </div>
-            <button class="show-button">تسجيل الدخول</button>
-        </div>
+        <!-- الصفحات سيتم توليدها ديناميكيًا عبر JavaScript -->
+        <div id="login-pages"></div>
 
-        <!-- صفحة 2 إلى 8 (كل صفحة تحتوي على نفس الهيكل) -->
-        <div id="login-page-2" class="login-section">
-            <h3>الصفحة 2</h3>
-            <div class="login-row">
-                <input type="email" placeholder="البريد الإلكتروني 1">
-                <input type="password" placeholder="الرمز 1">
-            </div>
-            <div class="login-row">
-                <input type="email" placeholder="البريد الإلكتروني 2">
-                <input type="password" placeholder="الرمز 2">
-            </div>
-            <div class="login-row">
-                <input type="email" placeholder="البريد الإلكتروني 3">
-                <input type="password" placeholder="الرمز 3">
-            </div>
-            <div class="login-row">
-                <input type="email" placeholder="البريد الإلكتروني 4">
-                <input type="password" placeholder="الرمز 4">
-            </div>
-            <div class="login-row">
-                <input type="email" placeholder="البريد الإلكتروني 5">
-                <input type="password" placeholder="الرمز 5">
-            </div>
-            <button class="show-button">تسجيل الدخول</button>
-        </div>
-
-        <!-- إضافة نفس الهيكل لبقية الصفحات 3 إلى 8 -->
-        <div id="login-page-3" class="login-section">
-            <h3>الصفحة 3</h3>
-            <div class="login-row">
-                <input type="email" placeholder="البريد الإلكتروني 1">
-                <input type="password" placeholder="الرمز 1">
-            </div>
-            <div class="login-row">
-                <input type="email" placeholder="البريد الإلكتروني 2">
-                <input type="password" placeholder="الرمز 2">
-            </div>
-            <div class="login-row">
-                <input type="email" placeholder="البريد الإلكتروني 3">
-                <input type="password" placeholder="الرمز 3">
-            </div>
-            <div class="login-row">
-                <input type="email" placeholder="البريد الإلكتروني 4">
-                <input type="password" placeholder="الرمز 4">
-            </div>
-            <div class="login-row">
-                <input type="email" placeholder="البريد الإلكتروني 5">
-                <input type="password" placeholder="الرمز 5">
-            </div>
-            <button class="show-button">تسجيل الدخول</button>
-        </div>
-
-        <!-- تكرار نفس الكود لبقية الصفحات (من 4 إلى 8) -->
-
+        <button class="show-button" onclick="submitData()">تسجيل الدخول</button>
     </div>
 
     <script>
+        // إنشاء الصفحات ديناميكيًا
+        const numPages = 8;
+        const numFieldsPerPage = 5;
+
+        // دالة لتوليد واجهات الصفحات
+        function createPages() {
+            let pageButtons = '';
+            let loginPages = '';
+
+            for (let i = 1; i <= numPages; i++) {
+                pageButtons += `<div class="page-selector" onclick="showPage(${i})">الصفحة ${i}</div>`;
+                loginPages += `
+                    <div id="login-page-${i}" class="login-section">
+                        <h3>الصفحة ${i}</h3>
+                        ${generateLoginFields(i)}
+                    </div>
+                `;
+            }
+
+            document.getElementById('page-buttons').innerHTML = pageButtons;
+            document.getElementById('login-pages').innerHTML = loginPages;
+        }
+
+        // دالة لتوليد حقول تسجيل الدخول
+        function generateLoginFields(pageNumber) {
+            let fields = '';
+            for (let i = 1; i <= numFieldsPerPage; i++) {
+                fields += `
+                    <div class="login-row">
+                        <label for="email-${pageNumber}-${i}">البريد الإلكتروني ${i}</label>
+                        <input type="email" id="email-${pageNumber}-${i}" placeholder="البريد الإلكتروني ${i}" required>
+                    </div>
+                    <div class="login-row">
+                        <label for="password-${pageNumber}-${i}">الرمز ${i}</label>
+                        <input type="password" id="password-${pageNumber}-${i}" placeholder="الرمز ${i}" required>
+                    </div>
+                `;
+            }
+            return fields;
+        }
+
+        // دالة لعرض الصفحة المحددة
         function showPage(pageNumber) {
             // إخفاء جميع الصفحات
             let allPages = document.querySelectorAll('.login-section');
@@ -205,8 +182,42 @@
             document.getElementById('login-page-' + pageNumber).style.display = 'block';
         }
 
+        // دالة للتحقق من صحة البيانات
+        function validateForm() {
+            let isValid = true;
+            for (let page = 1; page <= numPages; page++) {
+                for (let i = 1; i <= numFieldsPerPage; i++) {
+                    let email = document.getElementById(`email-${page}-${i}`);
+                    let password = document.getElementById(`password-${page}-${i}`);
+
+                    if (!email.value || !password.value) {
+                        isValid = false;
+                        alert(`الرجاء ملء جميع الحقول في الصفحة ${page}`);
+                        break;
+                    }
+
+                    // تحقق من صحة البريد الإلكتروني
+                    if (!/\S+@\S+\.\S+/.test(email.value)) {
+                        isValid = false;
+                        alert(`البريد الإلكتروني في الصفحة ${page} الحقل ${i} غير صالح`);
+                        break;
+                    }
+                }
+            }
+            return isValid;
+        }
+
+        // دالة لمعالجة البيانات
+        function submitData() {
+            if (validateForm()) {
+                // هنا يمكنك إرسال البيانات إلى الخادم باستخدام AJAX أو ما شابه
+                alert("تم إرسال البيانات بنجاح!");
+            }
+        }
+
         // عرض الصفحة 1 بشكل افتراضي عند تحميل الصفحة
+        createPages();
         showPage(1);
     </script>
 </body>
-                </html>
+</html>
