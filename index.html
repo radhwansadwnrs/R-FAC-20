@@ -23,7 +23,7 @@
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 600px;
+            max-width: 800px;
             overflow: hidden;
             text-align: center;
         }
@@ -42,7 +42,7 @@
             border-radius: 4px;
             cursor: pointer;
             margin: 5px;
-            width: 50px;
+            width: 60px;
             display: inline-block;
             font-size: 14px;
         }
@@ -54,6 +54,7 @@
         .login-section {
             display: none;
             margin-top: 20px;
+            transition: all 0.3s ease-in-out;
         }
 
         .login-row {
@@ -82,20 +83,13 @@
             background-color: #45a049;
         }
 
-        .page-names {
-            margin-top: 20px;
-        }
-
-        .page-name {
-            background-color: #ddd;
-            padding: 5px;
+        .notification {
+            display: none;
+            padding: 10px;
+            background-color: #f8d7da;
+            color: #721c24;
             border-radius: 4px;
-            cursor: pointer;
-            margin-top: 5px;
-        }
-
-        .page-name:hover {
-            background-color: #ccc;
+            margin-top: 20px;
         }
 
         /* تحسين التفاعل مع الأجهزة المحمولة */
@@ -106,7 +100,7 @@
 
             .page-selector {
                 font-size: 12px;
-                width: 40px;
+                width: 50px;
             }
 
             .show-button {
@@ -120,22 +114,21 @@
         <h2>تسجيل الدخول لحسابات فيسبوك متعددة</h2>
 
         <div class="page-selector-container">
-            <!-- استخدام JavaScript لتوليد الصفحات ديناميكيًا -->
             <div id="page-buttons"></div>
         </div>
 
-        <!-- الصفحات سيتم توليدها ديناميكيًا عبر JavaScript -->
         <div id="login-pages"></div>
 
         <button class="show-button" onclick="submitData()">تسجيل الدخول</button>
+        <div class="notification" id="notification"></div>
     </div>
 
     <script>
-        // إنشاء الصفحات ديناميكيًا
+        // عدد الصفحات وعدد الخانات في كل صفحة
         const numPages = 8;
-        const numFieldsPerPage = 5;
+        const numFieldsPerPage = 13; // تم زيادة الخانات إلى 13
 
-        // دالة لتوليد واجهات الصفحات
+        // دالة لإنشاء الصفحات
         function createPages() {
             let pageButtons = '';
             let loginPages = '';
@@ -192,14 +185,14 @@
 
                     if (!email.value || !password.value) {
                         isValid = false;
-                        alert(`الرجاء ملء جميع الحقول في الصفحة ${page}`);
+                        showNotification(`الرجاء ملء جميع الحقول في الصفحة ${page}`, 'error');
                         break;
                     }
 
                     // تحقق من صحة البريد الإلكتروني
                     if (!/\S+@\S+\.\S+/.test(email.value)) {
                         isValid = false;
-                        alert(`البريد الإلكتروني في الصفحة ${page} الحقل ${i} غير صالح`);
+                        showNotification(`البريد الإلكتروني في الصفحة ${page} الحقل ${i} غير صالح`, 'error');
                         break;
                     }
                 }
@@ -207,11 +200,20 @@
             return isValid;
         }
 
+        // دالة لإظهار التنبيهات
+        function showNotification(message, type) {
+            let notification = document.getElementById('notification');
+            notification.style.display = 'block';
+            notification.innerHTML = message;
+            notification.style.backgroundColor = type === 'error' ? '#f8d7da' : '#d4edda';
+            notification.style.color = type === 'error' ? '#721c24' : '#155724';
+        }
+
         // دالة لمعالجة البيانات
         function submitData() {
             if (validateForm()) {
+                showNotification("تم إرسال البيانات بنجاح!", 'success');
                 // هنا يمكنك إرسال البيانات إلى الخادم باستخدام AJAX أو ما شابه
-                alert("تم إرسال البيانات بنجاح!");
             }
         }
 
