@@ -7,76 +7,67 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
+            background-color: #2c2c2c;
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            color: white;
         }
 
         .login-container {
-            background-color: white;
+            background-color: #333333;
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            max-width: 1200px;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
         }
 
-        /* تصميم الشريط العلوي للصفحات */
-        .pages-container {
+        h2 {
+            margin-bottom: 20px;
+            color: #9C27B0;
+        }
+
+        /* تصميم أزرار الصفحات */
+        .page-buttons {
             display: flex;
             justify-content: center;
+            gap: 10px;
             margin-bottom: 20px;
-            margin-top: 10px;
         }
 
-        .page {
+        .page-button {
             background-color: #4CAF50;
             color: white;
-            padding: 12px;
+            padding: 10px;
             border-radius: 4px;
-            margin: 0 5px;
             cursor: pointer;
-            text-align: center;
-            transition: background-color 0.3s;
             width: 40px;
+            text-align: center;
+            transition: background-color 0.3s ease;
         }
 
-        .page:hover {
+        .page-button:hover {
             background-color: #9C27B0;
         }
 
-        .page.active {
+        .page-button.active {
             background-color: #333333;
             color: #fff;
         }
 
-        /* حسابات التسجيل */
-        .accounts-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
+        /* الحقول لتسجيل الدخول */
+        .login-fields {
+            display: none;
+            margin-top: 20px;
         }
 
-        .account-box {
-            width: calc(20% - 10px);
-            background-color: #ffffff;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 10px;
-        }
-
-        .account-box input {
-            width: 90%;
+        .login-fields input {
+            width: 80%;
             padding: 10px;
             margin: 5px 0;
             border: 1px solid #ccc;
@@ -84,13 +75,14 @@
         }
 
         button {
-            width: 100%;
+            width: 80%;
             padding: 10px;
             background-color: #4CAF50;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            margin-top: 20px;
         }
 
         button:hover {
@@ -100,89 +92,80 @@
         /* حقوق النشر */
         .footer {
             text-align: center;
-            margin-top: 20px;
             font-size: 14px;
-            color: #555;
+            color: #aaa;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <!-- شريط الصفحات -->
-        <div class="pages-container">
-            <div class="page active" onclick="showPage(1)">1</div>
-            <div class="page" onclick="showPage(2)">2</div>
-            <div class="page" onclick="showPage(3)">3</div>
-            <div class="page" onclick="showPage(4)">4</div>
-            <div class="page" onclick="showPage(5)">5</div>
-            <div class="page" onclick="showPage(6)">6</div>
-            <div class="page" onclick="showPage(7)">7</div>
-            <div class="page" onclick="showPage(8)">8</div>
-            <div class="page" onclick="showPage(9)">9</div>
-            <div class="page" onclick="showPage(10)">10</div>
-            <div class="page" onclick="showPage(11)">11</div>
-            <div class="page" onclick="showPage(12)">12</div>
-            <div class="page" onclick="showPage(13)">13</div>
-            <div class="page" onclick="showPage(14)">14</div>
-            <div class="page" onclick="showPage(15)">15</div>
-            <div class="page" onclick="showPage(16)">16</div>
-            <div class="page" onclick="showPage(17)">17</div>
-            <div class="page" onclick="showPage(18)">18</div>
-            <div class="page" onclick="showPage(19)">19</div>
-            <div class="page" onclick="showPage(20)">20</div>
+        <h2>تسجيل الدخول لحسابات فيسبوك متعددة</h2>
+        
+        <!-- أزرار التنقل بين الصفحات -->
+        <div class="page-buttons">
+            <div class="page-button active" onclick="showPage(1)">1</div>
+            <div class="page-button" onclick="showPage(2)">2</div>
+            <div class="page-button" onclick="showPage(3)">3</div>
+            <div class="page-button" onclick="showPage(4)">4</div>
+            <div class="page-button" onclick="showPage(5)">5</div>
+            <div class="page-button" onclick="showPage(6)">6</div>
+            <div class="page-button" onclick="showPage(7)">7</div>
+            <div class="page-button" onclick="showPage(8)">8</div>
+            <div class="page-button" onclick="showPage(9)">9</div>
+            <div class="page-button" onclick="showPage(10)">10</div>
+            <div class="page-button" onclick="showPage(11)">11</div>
+            <div class="page-button" onclick="showPage(12)">12</div>
+            <div class="page-button" onclick="showPage(13)">13</div>
+            <div class="page-button" onclick="showPage(14)">14</div>
+            <div class="page-button" onclick="showPage(15)">15</div>
+            <div class="page-button" onclick="showPage(16)">16</div>
+            <div class="page-button" onclick="showPage(17)">17</div>
+            <div class="page-button" onclick="showPage(18)">18</div>
+            <div class="page-button" onclick="showPage(19)">19</div>
+            <div class="page-button" onclick="showPage(20)">20</div>
         </div>
 
-        <!-- الحسابات -->
-        <div class="accounts-container">
-            <!-- الحسابات من 1 إلى 5 -->
-            <div id="page1" class="account-box">
-                <input type="email" placeholder="البريد الإلكتروني 1" id="email1">
-                <input type="password" placeholder="الرمز 1" id="password1">
-            </div>
-            <div id="page2" class="account-box" style="display: none;">
-                <input type="email" placeholder="البريد الإلكتروني 2" id="email2">
-                <input type="password" placeholder="الرمز 2" id="password2">
-            </div>
-            <div id="page3" class="account-box" style="display: none;">
-                <input type="email" placeholder="البريد الإلكتروني 3" id="email3">
-                <input type="password" placeholder="الرمز 3" id="password3">
-            </div>
-            <div id="page4" class="account-box" style="display: none;">
-                <input type="email" placeholder="البريد الإلكتروني 4" id="email4">
-                <input type="password" placeholder="الرمز 4" id="password4">
-            </div>
-            <div id="page5" class="account-box" style="display: none;">
-                <input type="email" placeholder="البريد الإلكتروني 5" id="email5">
-                <input type="password" placeholder="الرمز 5" id="password5">
-            </div>
-            <div id="page6" class="account-box" style="display: none;">
-                <input type="email" placeholder="البريد الإلكتروني 6" id="email6">
-                <input type="password" placeholder="الرمز 6" id="password6">
-            </div>
-            <!-- تكرار نفس النمط لبقية الصفحات حتى 20 -->
+        <!-- الحقول الخاصة بكل صفحة -->
+        <div id="page1" class="login-fields">
+            <input type="email" placeholder="البريد الإلكتروني 1" id="email1">
+            <input type="password" placeholder="الرمز 1" id="password1">
+            <input type="email" placeholder="البريد الإلكتروني 2" id="email2">
+            <input type="password" placeholder="الرمز 2" id="password2">
+            <input type="email" placeholder="البريد الإلكتروني 3" id="email3">
+            <input type="password" placeholder="الرمز 3" id="password3">
+            <input type="email" placeholder="البريد الإلكتروني 4" id="email4">
+            <input type="password" placeholder="الرمز 4" id="password4">
+            <input type="email" placeholder="البريد الإلكتروني 5" id="email5">
+            <input type="password" placeholder="الرمز 5" id="password5">
         </div>
+
+        <div id="page2" class="login-fields" style="display:none;">
+            <!-- نفس الحقول هنا -->
+        </div>
+        <!-- تكرار الحقول لبقية الصفحات حتى 20 -->
 
         <button type="submit">تسجيل الدخول</button>
     </div>
 
     <div class="footer">
-        جميع الحقوق محفوظة لأدم
+        جميع الحقوق محفوظة لـ أدم
     </div>
 
     <script>
         function showPage(pageNumber) {
-            // إخفاء جميع الصفحات
+            // إخفاء جميع الحقول
             for (let i = 1; i <= 20; i++) {
                 document.getElementById("page" + i).style.display = "none";
-                document.querySelectorAll('.page')[i-1].classList.remove('active');
+                document.querySelectorAll('.page-button')[i - 1].classList.remove('active');
             }
 
-            // إظهار الصفحة المحددة
+            // إظهار الحقول الخاصة بالصفحة
             document.getElementById("page" + pageNumber).style.display = "block";
-            document.querySelectorAll('.page')[pageNumber - 1].classList.add('active');
+            document.querySelectorAll('.page-button')[pageNumber - 1].classList.add('active');
         }
 
-        // عرض الصفحة الأولى بشكل افتراضي
+        // عرض الصفحة 1 بشكل افتراضي عند تحميل الصفحة
         showPage(1);
     </script>
 </body>
