@@ -7,9 +7,9 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f0f4f7;
             margin: 0;
             padding: 0;
-            background-color: #f0f4f7;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -55,10 +55,10 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 300px;
             background-color: rgba(0, 0, 0, 0.5);
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             padding: 20px;
         }
 
@@ -66,8 +66,12 @@
             background-color: #ffffff;
             border-radius: 8px;
             padding: 20px;
-            width: 300px;
-            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            overflow-y: auto;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .popup-button {
@@ -78,6 +82,7 @@
             cursor: pointer;
             margin: 5px;
             transition: background-color 0.3s ease;
+            text-align: center;
         }
 
         .popup-button:hover {
@@ -121,6 +126,7 @@
     </style>
 </head>
 <body>
+
     <div class="login-container">
         <h2>تسجيل الدخول لحسابات فيسبوك متعددة</h2>
         
@@ -160,6 +166,7 @@
 
         <!-- الحقول الخاصة بكل صفحة -->
         <div id="page1" class="login-fields">
+            <h3>الصفحة 1</h3>
             <input type="email" placeholder="البريد الإلكتروني 1" id="email1">
             <input type="password" placeholder="الرمز 1" id="password1">
             <input type="email" placeholder="البريد الإلكتروني 2" id="email2">
@@ -171,6 +178,22 @@
             <input type="email" placeholder="البريد الإلكتروني 5" id="email5">
             <input type="password" placeholder="الرمز 5" id="password5">
         </div>
+
+        <div id="page2" class="login-fields">
+            <h3>الصفحة 2</h3>
+            <input type="email" placeholder="البريد الإلكتروني 6" id="email6">
+            <input type="password" placeholder="الرمز 6" id="password6">
+            <input type="email" placeholder="البريد الإلكتروني 7" id="email7">
+            <input type="password" placeholder="الرمز 7" id="password7">
+            <input type="email" placeholder="البريد الإلكتروني 8" id="email8">
+            <input type="password" placeholder="الرمز 8" id="password8">
+            <input type="email" placeholder="البريد الإلكتروني 9" id="email9">
+            <input type="password" placeholder="الرمز 9" id="password9">
+            <input type="email" placeholder="البريد الإلكتروني 10" id="email10">
+            <input type="password" placeholder="الرمز 10" id="password10">
+        </div>
+
+        <!-- يمكنك إضافة المزيد من الصفحات بنفس الطريقة -->
 
         <button type="submit">تسجيل الدخول</button>
     </div>
@@ -186,13 +209,12 @@
         }
 
         function showPage(pageNumber) {
-            // إخفاء جميع الحقول
+            // عرض الحقول الخاصة بالصفحة المحددة
             for (let i = 1; i <= 20; i++) {
                 document.getElementById("page" + i).style.display = "none";
             }
-
-            // إظهار الحقول الخاصة بالصفحة
             document.getElementById("page" + pageNumber).style.display = "block";
+
             togglePopup(); // إغلاق النافذة المنبثقة بعد اختيار الصفحة
         }
 
@@ -200,4 +222,4 @@
         showPage(1);
     </script>
 </body>
-</html>
+    </html>
