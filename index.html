@@ -3,223 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول المتعدد</title>
+    <title>تسجيل الدخول لحسابات فيسبوك متعددة</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f4f7;
+            background-color: #f7f7f7;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            color: #333;
         }
 
-        .login-container {
-            background-color: #ffffff;
+        .container {
+            background-color: white;
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 500px;
+            max-width: 600px;
+            overflow: hidden;
             text-align: center;
         }
 
-        h2 {
-            color: #4CAF50;
-            margin-bottom: 20px;
-        }
-
-        .page-button {
+        .page-selector {
             background-color: #4CAF50;
             color: white;
             padding: 10px;
             border-radius: 4px;
             cursor: pointer;
             margin: 10px;
-            width: 120px;
-            text-align: center;
-            transition: background-color 0.3s ease;
+            width: 50px;
+            display: inline-block;
         }
 
-        .page-button:hover {
+        .page-selector:hover {
             background-color: #45a049;
         }
 
-        /* نافذة منبثقة لعرض الصفحات */
-        .popup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 300px;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: flex-start;
-            padding: 20px;
-        }
-
-        .popup-content {
-            background-color: #ffffff;
-            border-radius: 8px;
-            padding: 20px;
-            width: 100%;
-            max-width: 400px;
-            overflow-y: auto;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .popup-button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin: 5px;
-            transition: background-color 0.3s ease;
-            text-align: center;
-        }
-
-        .popup-button:hover {
-            background-color: #45a049;
-        }
-
-        .login-fields {
+        .login-section {
             display: none;
             margin-top: 20px;
         }
 
-        .login-fields input {
-            width: 80%;
+        .login-row {
+            margin-bottom: 15px;
+        }
+
+        .login-row input {
+            width: 100%;
             padding: 10px;
             margin: 5px 0;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
 
-        button {
-            width: 80%;
+        .show-button {
+            width: 100%;
             padding: 10px;
             background-color: #4CAF50;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            margin-top: 20px;
         }
 
-        button:hover {
+        .show-button:hover {
             background-color: #45a049;
         }
 
-        .footer {
-            text-align: center;
-            font-size: 14px;
-            color: #aaa;
+        .page-names {
             margin-top: 20px;
+        }
+
+        .page-name {
+            background-color: #ddd;
+            padding: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .page-name:hover {
+            background-color: #ccc;
         }
     </style>
 </head>
 <body>
-
-    <div class="login-container">
+    <div class="container">
         <h2>تسجيل الدخول لحسابات فيسبوك متعددة</h2>
-        
-        <!-- زر لفتح النافذة المنبثقة -->
-        <div class="page-button" onclick="togglePopup()">اختيار الصفحة</div>
-
-        <!-- نافذة منبثقة لعرض الصفحات -->
-        <div class="popup" id="popup">
-            <div class="popup-content">
-                <h3>اختر رقم الصفحة</h3>
-                <div class="page-buttons">
-                    <!-- أزرار الصفحات -->
-                    <div class="popup-button" onclick="showPage(1)">1</div>
-                    <div class="popup-button" onclick="showPage(2)">2</div>
-                    <div class="popup-button" onclick="showPage(3)">3</div>
-                    <div class="popup-button" onclick="showPage(4)">4</div>
-                    <div class="popup-button" onclick="showPage(5)">5</div>
-                    <div class="popup-button" onclick="showPage(6)">6</div>
-                    <div class="popup-button" onclick="showPage(7)">7</div>
-                    <div class="popup-button" onclick="showPage(8)">8</div>
-                    <div class="popup-button" onclick="showPage(9)">9</div>
-                    <div class="popup-button" onclick="showPage(10)">10</div>
-                    <div class="popup-button" onclick="showPage(11)">11</div>
-                    <div class="popup-button" onclick="showPage(12)">12</div>
-                    <div class="popup-button" onclick="showPage(13)">13</div>
-                    <div class="popup-button" onclick="showPage(14)">14</div>
-                    <div class="popup-button" onclick="showPage(15)">15</div>
-                    <div class="popup-button" onclick="showPage(16)">16</div>
-                    <div class="popup-button" onclick="showPage(17)">17</div>
-                    <div class="popup-button" onclick="showPage(18)">18</div>
-                    <div class="popup-button" onclick="showPage(19)">19</div>
-                    <div class="popup-button" onclick="showPage(20)">20</div>
-                </div>
-                <div class="popup-button" onclick="togglePopup()">إغلاق</div>
-            </div>
+        <div class="page-names">
+            <div class="page-name" onclick="showPage(1)">الصفحة 1</div>
+            <div class="page-name" onclick="showPage(2)">الصفحة 2</div>
+            <div class="page-name" onclick="showPage(3)">الصفحة 3</div>
+            <div class="page-name" onclick="showPage(4)">الصفحة 4</div>
+            <div class="page-name" onclick="showPage(5)">الصفحة 5</div>
+            <div class="page-name" onclick="showPage(6)">الصفحة 6</div>
+            <div class="page-name" onclick="showPage(7)">الصفحة 7</div>
+            <div class="page-name" onclick="showPage(8)">الصفحة 8</div>
         </div>
 
-        <!-- الحقول الخاصة بكل صفحة -->
-        <div id="page1" class="login-fields">
+        <div id="login-page-1" class="login-section">
             <h3>الصفحة 1</h3>
-            <input type="email" placeholder="البريد الإلكتروني 1" id="email1">
-            <input type="password" placeholder="الرمز 1" id="password1">
-            <input type="email" placeholder="البريد الإلكتروني 2" id="email2">
-            <input type="password" placeholder="الرمز 2" id="password2">
-            <input type="email" placeholder="البريد الإلكتروني 3" id="email3">
-            <input type="password" placeholder="الرمز 3" id="password3">
-            <input type="email" placeholder="البريد الإلكتروني 4" id="email4">
-            <input type="password" placeholder="الرمز 4" id="password4">
-            <input type="email" placeholder="البريد الإلكتروني 5" id="email5">
-            <input type="password" placeholder="الرمز 5" id="password5">
+            <div class="login-row">
+                <input type="email" placeholder="البريد الإلكتروني 1">
+                <input type="password" placeholder="الرمز 1">
+            </div>
+            <div class="login-row">
+                <input type="email" placeholder="البريد الإلكتروني 2">
+                <input type="password" placeholder="الرمز 2">
+            </div>
+            <div class="login-row">
+                <input type="email" placeholder="البريد الإلكتروني 3">
+                <input type="password" placeholder="الرمز 3">
+            </div>
+            <div class="login-row">
+                <input type="email" placeholder="البريد الإلكتروني 4">
+                <input type="password" placeholder="الرمز 4">
+            </div>
+            <div class="login-row">
+                <input type="email" placeholder="البريد الإلكتروني 5">
+                <input type="password" placeholder="الرمز 5">
+            </div>
+            <button class="show-button">تسجيل الدخول</button>
         </div>
 
-        <div id="page2" class="login-fields">
+        <div id="login-page-2" class="login-section">
             <h3>الصفحة 2</h3>
-            <input type="email" placeholder="البريد الإلكتروني 6" id="email6">
-            <input type="password" placeholder="الرمز 6" id="password6">
-            <input type="email" placeholder="البريد الإلكتروني 7" id="email7">
-            <input type="password" placeholder="الرمز 7" id="password7">
-            <input type="email" placeholder="البريد الإلكتروني 8" id="email8">
-            <input type="password" placeholder="الرمز 8" id="password8">
-            <input type="email" placeholder="البريد الإلكتروني 9" id="email9">
-            <input type="password" placeholder="الرمز 9" id="password9">
-            <input type="email" placeholder="البريد الإلكتروني 10" id="email10">
-            <input type="password" placeholder="الرمز 10" id="password10">
+            <div class="login-row">
+                <input type="email" placeholder="البريد الإلكتروني 1">
+                <input type="password" placeholder="الرمز 1">
+            </div>
+            <div class="login-row">
+                <input type="email" placeholder="البريد الإلكتروني 2">
+                <input type="password" placeholder="الرمز 2">
+            </div>
+            <div class="login-row">
+                <input type="email" placeholder="البريد الإلكتروني 3">
+                <input type="password" placeholder="الرمز 3">
+            </div>
+            <div class="login-row">
+                <input type="email" placeholder="البريد الإلكتروني 4">
+                <input type="password" placeholder="الرمز 4">
+            </div>
+            <div class="login-row">
+                <input type="email" placeholder="البريد الإلكتروني 5">
+                <input type="password" placeholder="الرمز 5">
+            </div>
+            <button class="show-button">تسجيل الدخول</button>
         </div>
 
         <!-- يمكنك إضافة المزيد من الصفحات بنفس الطريقة -->
 
-        <button type="submit">تسجيل الدخول</button>
-    </div>
-
-    <div class="footer">
-        جميع الحقوق محفوظة لأدم
     </div>
 
     <script>
-        function togglePopup() {
-            let popup = document.getElementById("popup");
-            popup.style.display = (popup.style.display === "flex") ? "none" : "flex";
-        }
-
         function showPage(pageNumber) {
-            // عرض الحقول الخاصة بالصفحة المحددة
-            for (let i = 1; i <= 20; i++) {
-                document.getElementById("page" + i).style.display = "none";
-            }
-            document.getElementById("page" + pageNumber).style.display = "block";
-
-            togglePopup(); // إغلاق النافذة المنبثقة بعد اختيار الصفحة
+            // إخفاء جميع الصفحات
+            let allPages = document.querySelectorAll('.login-section');
+            allPages.forEach(page => page.style.display = 'none');
+            
+            // إظهار الصفحة المحددة
+            document.getElementById('login-page-' + pageNumber).style.display = 'block';
         }
 
         // عرض الصفحة 1 بشكل افتراضي عند تحميل الصفحة
-        showPage(1);
+        window.onload = function() {
+            showPage(1);
+        };
     </script>
 </body>
-    </html>
+</html>
