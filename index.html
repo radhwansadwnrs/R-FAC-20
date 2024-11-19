@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
+            background-color: #f1f1f1;
             margin: 0;
             padding: 0;
             display: flex;
@@ -21,40 +21,57 @@
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 350px;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .page-header {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            margin-top: 20px;
+            flex-direction: row;
+            width: 100%;
+            max-width: 1200px;
         }
 
-        .page-header div {
+        /* تغيير ترتيب الصفحات */
+        .pages-container {
+            width: 25%;
+            margin-right: 20px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: scroll;
+            max-height: 85vh;
+        }
+
+        .page {
             background-color: #4CAF50;
             color: white;
             padding: 10px;
             border-radius: 4px;
             cursor: pointer;
+            margin-bottom: 5px;
+            text-align: center;
         }
 
-        .page-header div:hover {
+        .page:hover {
             background-color: #45a049;
         }
 
-        .login-row {
-            margin-bottom: 15px;
+        /* تصميم الحسابات */
+        .accounts-container {
+            width: 75%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
-        .login-row input {
-            width: 100%;
+        .account-box {
+            width: calc(20% - 10px);
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .account-box input {
+            width: 90%;
             padding: 10px;
             margin: 5px 0;
             border: 1px solid #ccc;
@@ -78,49 +95,73 @@
 </head>
 <body>
     <div class="login-container">
-        <h2>تسجيل الدخول إلى حسابات فيسبوك</h2>
-        <div class="page-header">
-            <div>الصفحة 1</div>
-            <div>الصفحة 2</div>
-            <div>الصفحة 3</div>
-            <div>الصفحة 4</div>
-            <div>الصفحة 5</div>
+        <!-- صفحات الاختيار -->
+        <div class="pages-container">
+            <div class="page" onclick="showPage(1)">الصفحة 1</div>
+            <div class="page" onclick="showPage(2)">الصفحة 2</div>
+            <div class="page" onclick="showPage(3)">الصفحة 3</div>
+            <div class="page" onclick="showPage(4)">الصفحة 4</div>
+            <div class="page" onclick="showPage(5)">الصفحة 5</div>
+            <div class="page" onclick="showPage(6)">الصفحة 6</div>
+            <div class="page" onclick="showPage(7)">الصفحة 7</div>
+            <div class="page" onclick="showPage(8)">الصفحة 8</div>
+            <div class="page" onclick="showPage(9)">الصفحة 9</div>
+            <div class="page" onclick="showPage(10)">الصفحة 10</div>
+            <div class="page" onclick="showPage(11)">الصفحة 11</div>
+            <div class="page" onclick="showPage(12)">الصفحة 12</div>
+            <div class="page" onclick="showPage(13)">الصفحة 13</div>
+            <div class="page" onclick="showPage(14)">الصفحة 14</div>
+            <div class="page" onclick="showPage(15)">الصفحة 15</div>
+            <div class="page" onclick="showPage(16)">الصفحة 16</div>
+            <div class="page" onclick="showPage(17)">الصفحة 17</div>
+            <div class="page" onclick="showPage(18)">الصفحة 18</div>
+            <div class="page" onclick="showPage(19)">الصفحة 19</div>
+            <div class="page" onclick="showPage(20)">الصفحة 20</div>
         </div>
 
-        <!-- الصفحة 1 -->
-        <div class="login-row">
-            <input type="email" placeholder="البريد الإلكتروني 1" id="email1">
-            <input type="password" placeholder="الرمز 1" id="password1">
+        <!-- الحسابات -->
+        <div class="accounts-container">
+            <!-- الحسابات من 1 إلى 5 -->
+            <div id="page1" class="account-box" style="display: none;">
+                <input type="email" placeholder="البريد الإلكتروني 1" id="email1">
+                <input type="password" placeholder="الرمز 1" id="password1">
+            </div>
+            <div id="page2" class="account-box" style="display: none;">
+                <input type="email" placeholder="البريد الإلكتروني 2" id="email2">
+                <input type="password" placeholder="الرمز 2" id="password2">
+            </div>
+            <div id="page3" class="account-box" style="display: none;">
+                <input type="email" placeholder="البريد الإلكتروني 3" id="email3">
+                <input type="password" placeholder="الرمز 3" id="password3">
+            </div>
+            <div id="page4" class="account-box" style="display: none;">
+                <input type="email" placeholder="البريد الإلكتروني 4" id="email4">
+                <input type="password" placeholder="الرمز 4" id="password4">
+            </div>
+            <div id="page5" class="account-box" style="display: none;">
+                <input type="email" placeholder="البريد الإلكتروني 5" id="email5">
+                <input type="password" placeholder="الرمز 5" id="password5">
+            </div>
+            <!-- يمكنك تكرار نفس النمط للصفحات الأخرى -->
         </div>
-
-        <!-- الصفحة 2 -->
-        <div class="login-row">
-            <input type="email" placeholder="البريد الإلكتروني 2" id="email2">
-            <input type="password" placeholder="الرمز 2" id="password2">
-        </div>
-
-        <!-- الصفحة 3 -->
-        <div class="login-row">
-            <input type="email" placeholder="البريد الإلكتروني 3" id="email3">
-            <input type="password" placeholder="الرمز 3" id="password3">
-        </div>
-
-        <!-- الصفحة 4 -->
-        <div class="login-row">
-            <input type="email" placeholder="البريد الإلكتروني 4" id="email4">
-            <input type="password" placeholder="الرمز 4" id="password4">
-        </div>
-
-        <!-- الصفحة 5 -->
-        <div class="login-row">
-            <input type="email" placeholder="البريد الإلكتروني 5" id="email5">
-            <input type="password" placeholder="الرمز 5" id="password5">
-        </div>
-
-        <button type="submit">تسجيل الدخول</button>
     </div>
 
+    <button type="submit">تسجيل الدخول</button>
+
     <script>
+        function showPage(pageNumber) {
+            // إخفاء جميع الصفحات
+            for (let i = 1; i <= 20; i++) {
+                document.getElementById("page" + i).style.display = "none";
+            }
+            // إظهار الصفحة المحددة
+            document.getElementById("page" + pageNumber).style.display = "block";
+        }
+
+        // الكود الافتراضي لعرض الصفحة 1 عند تحميل الصفحة
+        showPage(1);
+
+        // التعامل مع عملية تسجيل الدخول
         document.querySelector("button").addEventListener("click", function() {
             let emails = [];
             let passwords = [];
@@ -131,7 +172,7 @@
                 passwords.push(document.getElementById("password" + i).value);
             }
 
-            // تحقق من المدخلات (ملاحظة: يمكنك إضافة المزيد من التحقق حسب الحاجة)
+            // تحقق من المدخلات
             if (emails.every(email => email !== "") && passwords.every(password => password !== "")) {
                 alert("تم تسجيل الدخول بنجاح!");
             } else {
@@ -140,4 +181,4 @@
         });
     </script>
 </body>
-</html>
+    </html>
