@@ -3,223 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول لحسابات فيسبوك متعددة</title>
+    <title>حذف بيانات المستخدم</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-            margin: 0;
-            padding: 0;
+            background-color: #111;
+            color: white;
+            font-family: "Arial", sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            flex-direction: column;
+            margin: 0;
+            padding: 0;
         }
 
         .container {
-            background-color: white;
-            border-radius: 8px;
+            background-color: #222;
             padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 800px;
-            overflow: hidden;
+            border-radius: 10px;
             text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            width: 300px;
         }
 
-        .page-selector-container {
-            display: flex;
-            justify-content: space-evenly;
-            margin: 20px 0;
-            flex-wrap: wrap;
+        h1 {
+            color: #f44336; /* لون أحمر */
+            font-size: 24px;
         }
 
-        .page-selector {
-            background-color: #4CAF50;
+        p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #f44336; /* لون الزر */
             color: white;
-            padding: 5px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin: 5px;
-            width: 60px;
-            display: inline-block;
-            font-size: 14px;
-        }
-
-        .page-selector:hover {
-            background-color: #45a049;
-        }
-
-        .login-section {
-            display: none;
-            margin-top: 20px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .login-row {
-            margin-bottom: 15px;
-        }
-
-        .login-row input {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        .show-button {
-            width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
+            padding: 15px 25px;
+            font-size: 16px;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
         }
 
-        .show-button:hover {
-            background-color: #45a049;
-        }
-
-        .notification {
-            display: none;
-            padding: 10px;
-            background-color: #f8d7da;
-            color: #721c24;
-            border-radius: 4px;
-            margin-top: 20px;
-        }
-
-        /* تحسين التفاعل مع الأجهزة المحمولة */
-        @media (max-width: 600px) {
-            .container {
-                padding: 10px;
-            }
-
-            .page-selector {
-                font-size: 12px;
-                width: 50px;
-            }
-
-            .show-button {
-                font-size: 14px;
-            }
+        button:hover {
+            background-color: #d32f2f; /* تغيير اللون عند التمرير */
         }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h2>تسجيل الدخول لحسابات فيسبوك متعددة</h2>
-
-        <div class="page-selector-container">
-            <div id="page-buttons"></div>
-        </div>
-
-        <div id="login-pages"></div>
-
-        <button class="show-button" onclick="submitData()">تسجيل الدخول</button>
-        <div class="notification" id="notification"></div>
+        <h1>حذف بيانات المستخدم</h1>
+        <p>هل أنت متأكد أنك تريد حذف جميع بيانات حسابك؟</p>
+        <button onclick="deleteUserData()">حذف البيانات</button>
     </div>
 
     <script>
-        // عدد الصفحات وعدد الخانات في كل صفحة
-        const numPages = 8;
-        const numFieldsPerPage = 13; // تم زيادة الخانات إلى 13
+        function deleteUserData() {
+            // هنا يمكنك إضافة الكود الذي يقوم بحذف البيانات من الخادم أو الـ LocalStorage
+            // في هذه الحالة، سنقوم بإظهار رسالة تأكيد فقط لتوضيح فكرة الحذف
 
-        // دالة لإنشاء الصفحات
-        function createPages() {
-            let pageButtons = '';
-            let loginPages = '';
-
-            for (let i = 1; i <= numPages; i++) {
-                pageButtons += `<div class="page-selector" onclick="showPage(${i})">الصفحة ${i}</div>`;
-                loginPages += `
-                    <div id="login-page-${i}" class="login-section">
-                        <h3>الصفحة ${i}</h3>
-                        ${generateLoginFields(i)}
-                    </div>
-                `;
-            }
-
-            document.getElementById('page-buttons').innerHTML = pageButtons;
-            document.getElementById('login-pages').innerHTML = loginPages;
-        }
-
-        // دالة لتوليد حقول تسجيل الدخول
-        function generateLoginFields(pageNumber) {
-            let fields = '';
-            for (let i = 1; i <= numFieldsPerPage; i++) {
-                fields += `
-                    <div class="login-row">
-                        <label for="email-${pageNumber}-${i}">البريد الإلكتروني ${i}</label>
-                        <input type="email" id="email-${pageNumber}-${i}" placeholder="البريد الإلكتروني ${i}" required>
-                    </div>
-                    <div class="login-row">
-                        <label for="password-${pageNumber}-${i}">الرمز ${i}</label>
-                        <input type="password" id="password-${pageNumber}-${i}" placeholder="الرمز ${i}" required>
-                    </div>
-                `;
-            }
-            return fields;
-        }
-
-        // دالة لعرض الصفحة المحددة
-        function showPage(pageNumber) {
-            // إخفاء جميع الصفحات
-            let allPages = document.querySelectorAll('.login-section');
-            allPages.forEach(page => page.style.display = 'none');
-            
-            // إظهار الصفحة المحددة
-            document.getElementById('login-page-' + pageNumber).style.display = 'block';
-        }
-
-        // دالة للتحقق من صحة البيانات
-        function validateForm() {
-            let isValid = true;
-            for (let page = 1; page <= numPages; page++) {
-                for (let i = 1; i <= numFieldsPerPage; i++) {
-                    let email = document.getElementById(`email-${page}-${i}`);
-                    let password = document.getElementById(`password-${page}-${i}`);
-
-                    if (!email.value || !password.value) {
-                        isValid = false;
-                        showNotification(`الرجاء ملء جميع الحقول في الصفحة ${page}`, 'error');
-                        break;
-                    }
-
-                    // تحقق من صحة البريد الإلكتروني
-                    if (!/\S+@\S+\.\S+/.test(email.value)) {
-                        isValid = false;
-                        showNotification(`البريد الإلكتروني في الصفحة ${page} الحقل ${i} غير صالح`, 'error');
-                        break;
-                    }
-                }
-            }
-            return isValid;
-        }
-
-        // دالة لإظهار التنبيهات
-        function showNotification(message, type) {
-            let notification = document.getElementById('notification');
-            notification.style.display = 'block';
-            notification.innerHTML = message;
-            notification.style.backgroundColor = type === 'error' ? '#f8d7da' : '#d4edda';
-            notification.style.color = type === 'error' ? '#721c24' : '#155724';
-        }
-
-        // دالة لمعالجة البيانات
-        function submitData() {
-            if (validateForm()) {
-                showNotification("تم إرسال البيانات بنجاح!", 'success');
-                // هنا يمكنك إرسال البيانات إلى الخادم باستخدام AJAX أو ما شابه
+            let confirmation = confirm("هل أنت متأكد من أنك تريد حذف جميع بياناتك؟");
+            if (confirmation) {
+                // إذا تم تأكيد الحذف، نقوم بحذف البيانات
+                localStorage.clear(); // مسح البيانات من LocalStorage (إن وجدت)
+                alert("تم حذف بياناتك بنجاح.");
+            } else {
+                alert("تم إلغاء عملية الحذف.");
             }
         }
-
-        // عرض الصفحة 1 بشكل افتراضي عند تحميل الصفحة
-        createPages();
-        showPage(1);
     </script>
+
 </body>
 </html>
